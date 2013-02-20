@@ -1,36 +1,25 @@
 <?php			
 /**
  * This is the code that will create a new tab of settings for your page.
- * To set it up, first do a find-and-replace for the term 'mp_envato_check'
- * Then do a find and replace for 'general'
+ * To create a new tab and set up this page:
+ * Step 1. Duplicate this page and include it in the "class initialization function".
+ * Step 1. Do a find-and-replace for the term 'mp_envato_check_settings' and replace it with the slug you set when initializing this class
+ * Step 2. Do a find and replace for 'general' and replace it with your desired tab slug
+ * Step 3. Go to line 17 and set the title for this tab.
+ * Step 4. Begin creating your custom options on line 30
  * Go here for full setup instructions: 
  * http://moveplugins.com/settings-class/
  */
- 
+
 /**
-* Display tab at top of Theme Options page
+* Create new tab
 */
-function mp_envato_check_settings_general_tab_title($active_tab){ 
-	if ($active_tab == 'mp_envato_check_settings_general'){ $active_class = 'nav-tab-active'; }else{$active_class = "";}
-	echo ('<a href="?page=mp_envato_check_settings&tab=mp_envato_check_settings_general" class="nav-tab ' . $active_class . '">Envato Check Settings</a>');
-}
-add_action( 'mp_envato_check_settings_new_tab_hook', 'mp_envato_check_settings_general_tab_title' );
+$mp_envato_check_settings->mp_core_new_tab(__('Envato Check Settings' , 'mp_envato_check'), 'general');
 
 /**
- * Display the content for this tab
- */
-function mp_envato_check_settings_general_tab_content(){
-	function mp_envato_check_settings_general() {  
-		settings_fields( 'mp_envato_check_settings_general' );
-		do_settings_sections( 'mp_envato_check_settings_general' );
-	}
-}
-add_action( 'mp_envato_check_settings_do_settings_hook', 'mp_envato_check_settings_general_tab_content' );
-
+* Create the options for this tab
+*/
 function mp_envato_check_settings_general_create(){
-	
-	//This variable must be the name of the variable that stores the class.
-	global $mp_envato_check_settings_class;
 	
 	register_setting(
 		'mp_envato_check_settings_general',
@@ -48,7 +37,7 @@ function mp_envato_check_settings_general_create(){
 	add_settings_field(
 		'enable_disable',
 		__( 'Enable/Disable Envato Check', 'mp_envato_check' ), 
-		array( &$mp_envato_check_settings_class, 'select' ),
+		'mp_core_select',
 		'mp_envato_check_settings_general',
 		'envato_check_settings',
 		array(
@@ -63,7 +52,7 @@ function mp_envato_check_settings_general_create(){
 	add_settings_field(
 		'envato_username',
 		__( 'Envato Username', 'mp_envato_check' ), 
-		array( &$mp_envato_check_settings_class, 'textbox' ),
+		'mp_core_textbox',
 		'mp_envato_check_settings_general',
 		'envato_check_settings',
 		array(
@@ -77,7 +66,7 @@ function mp_envato_check_settings_general_create(){
 	add_settings_field(
 		'envato_api_key',
 		__( 'Envato API Key', 'mp_envato_check' ), 
-		array( &$mp_envato_check_settings_class, 'textbox' ),
+		'mp_core_textbox',
 		'mp_envato_check_settings_general',
 		'envato_check_settings',
 		array(
@@ -91,7 +80,7 @@ function mp_envato_check_settings_general_create(){
 	add_settings_field(
 		'redirect_page',
 		__( 'Redirect Page', 'mp_envato_check' ), 
-		array( &$mp_envato_check_settings_class, 'select' ),
+		'mp_core_select',
 		'mp_envato_check_settings_general',
 		'envato_check_settings',
 		array(
@@ -99,14 +88,14 @@ function mp_envato_check_settings_general_create(){
 			'value'       => mp_core_get_option( 'mp_envato_check_settings_general',  'redirect_page' ),
 			'description' => __( 'Select the page you want to redirect your users to after they create an account', 'mp_envato_check' ),
 			'registration'=> 'mp_envato_check_settings_general',
-			'options'=> $mp_envato_check_settings_class->get_all_pages() 
+			'options'=> mp_core_get_all_pages() 
 		)
 	);
 	
 	add_settings_field(
 		'envato_message',
 		__( 'Envato Message', 'mp_envato_check' ), 
-		array( &$mp_envato_check_settings_class, 'wp_editor' ),
+		'mp_core_wp_editor',
 		'mp_envato_check_settings_general',
 		'envato_check_settings',
 		array(
