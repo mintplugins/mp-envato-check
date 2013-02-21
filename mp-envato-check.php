@@ -70,12 +70,12 @@ function mp_envato_check_textdomain() {
 
 
 	// Traditional WordPress plugin locale filter
-	$locale        = apply_filters( 'plugin_locale',  get_locale(), 'mp_envato_check' );
-	$mofile        = sprintf( '%1$s-%2$s.mo', 'mp_envato_check', $locale );
+	$locale        = apply_filters( 'plugin_locale',  get_locale(), 'mp-envato-check' );
+	$mofile        = sprintf( '%1$s-%2$s.mo', 'mp-envato-check', $locale );
 
 	// Setup paths to current locale file
 	$mofile_local  = $mp_envato_check_lang_dir . $mofile;
-	$mofile_global = WP_LANG_DIR . '/mp_envato_check/' . $mofile;
+	$mofile_global = WP_LANG_DIR . '/mp-envato-check/' . $mofile;
 
 	if ( file_exists( $mofile_global ) ) {
 		// Look in global /wp-content/languages/mp_envato_check folder
@@ -110,7 +110,7 @@ if (!function_exists('mp_core_textdomain')){
 	/**
 	 * Check if wp_core in installed
 	 */
-	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp_core_check.php' );
+	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp-core-check.php' );
 	
 }
 /**
@@ -122,11 +122,11 @@ else{
 	/**
 	 * Create Metabox for HTML repeater for posts
 	 */
-	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/settings/mp_envato_check_options/mp_envato_check_options.php' );
+	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/settings/mp-envato-check-options/mp-envato-check-options.php' );
 	
 	/**
 	 * Create Metabox for HTML repeater for posts
 	 */
-	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/misc-functions/envato_check.php' );
+	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/misc-functions/envato-check.php' );
 	
 }
