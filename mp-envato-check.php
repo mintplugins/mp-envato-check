@@ -96,37 +96,39 @@ add_action( 'init', 'mp_envato_check_textdomain', 1 );
 | INCLUDES
 |--------------------------------------------------------------------------
 */
-
-/**
- * If mp_core isn't active, stop and install it now
- */
-if (!function_exists('mp_core_textdomain')){
-	
+function mp_envato_check_include_files(){
 	/**
-	 * Include Plugin Checker
+	 * If mp_core isn't active, stop and install it now
 	 */
-	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/plugin-checker/plugin-checker.php' );
-	
-	/**
-	 * Check if wp_core in installed
-	 */
-	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp-core-check.php' );
-	
-}
-/**
- * Otherwise, if mp_core is active, carry out the plugin's functions
- */
-else{
-
+	if (!function_exists('mp_core_textdomain')){
 		
+		/**
+		 * Include Plugin Checker
+		 */
+		require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/plugin-checker/plugin-checker.php' );
+		
+		/**
+		 * Check if wp_core in installed
+		 */
+		require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp-core-check.php' );
+		
+	}
 	/**
-	 * Create Metabox for HTML repeater for posts
+	 * Otherwise, if mp_core is active, carry out the plugin's functions
 	 */
-	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/settings/mp-envato-check-options/mp-envato-check-options.php' );
+	else{
 	
-	/**
-	 * Create Metabox for HTML repeater for posts
-	 */
-	require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/misc-functions/envato-check.php' );
-	
+			
+		/**
+		 * Create Metabox for HTML repeater for posts
+		 */
+		require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/settings/mp-envato-check-options/mp-envato-check-options.php' );
+		
+		/**
+		 * Create Metabox for HTML repeater for posts
+		 */
+		require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/misc-functions/envato-check.php' );
+		
+	}
 }
+add_action('plugins_loaded', 'mp_envato_check_include_files', 9);
