@@ -131,4 +131,5 @@ function mp_envato_check_include_files(){
 		
 	}
 }
+//
 add_action('plugins_loaded', 'mp_envato_check_include_files', 9);
