@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Move Plugins - Envato Check
+Plugin Name: MP Envato Check
 Plugin URI: http://moveplugins.com
 Description: Check if a customer has a registered code with Envato. If so, let them register for WP.
 Version: 1.0
-Author: Phil Johnston
+Author: Move Plugins
 Author URI: http://moveplugins.com
 Text Domain: mp_envato_check
 Domain Path: languages
@@ -118,6 +118,10 @@ function mp_envato_check_include_files(){
 	 */
 	else{
 	
+		/**
+		 * Update script - keeps this plugin up to date
+		 */
+		require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/updater/mp-envato-check-update.php' );
 			
 		/**
 		 * Create Metabox for HTML repeater for posts
