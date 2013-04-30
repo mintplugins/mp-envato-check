@@ -14,7 +14,16 @@
 /**
 * Create new tab
 */
-$mp_envato_check_settings->mp_core_new_tab(__('Envato Check Settings' , 'mp_envato_check'), 'general');
+function mp_envato_check_settings_general_new_tab( $active_tab ){
+	
+	//Create array containing the title and slug for this new tab
+	$tab_info = array( 'title' => __('Envato Check Settings Settings' , 'mp_envato_check'), 'slug' => 'general' );
+	
+	global $mp_envato_check_settings; $mp_envato_check_settings->new_tab( $active_tab, $tab_info );
+		
+}
+//Hook into the new tab hook filter contained in the settings class in the Move Plugins Core
+add_action('mp_envato_check_settings_new_tab_hook', 'mp_envato_check_settings_general_new_tab');
 
 /**
 * Create the options for this tab
