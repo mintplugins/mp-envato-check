@@ -11,7 +11,7 @@
 			'plugin_slug' => 'mp-core', //<--This will be the name of the subdirectory where the plugin is located
 			'plugin_filename' => 'mp-core.php',
 			'plugin_required' => true,
-			'plugin_download_link' => 'http://moveplugins.com/repo/move-plugins-core/?download=true'
+			'plugin_download_link' => 'http://repo.moveplugins.com/repo/move-plugins-core/?downloadfile=true'
 		);
 		$mp_core_plugin_check = new MP_CORE_Plugin_Checker($args);
 	}
