@@ -105,7 +105,12 @@ function mp_envato_check_include_files(){
 		/**
 		 * Include Plugin Checker
 		 */
-		require( MP_ENVATO_CHECK_PLUGIN_DIR . 'includes/plugin-checker/class-plugin-checker.php' );
+		require( MP_ENVATO_CHECK_PLUGIN_DIR . '/includes/plugin-checker/class-plugin-checker.php' );
+		
+		/**
+		 * Include Plugin Installer
+		 */
+		require( MP_ENVATO_CHECK_PLUGIN_DIR . '/includes/plugin-checker/class-plugin-installer.php' );
 		
 		/**
 		 * Check if wp_core in installed
